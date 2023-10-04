@@ -1,0 +1,243 @@
+﻿@model STUDENTREGISTRATIONFORM.Models.UpdateStudentViewModel;
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .app {
+            background-color: lightgray;
+            padding-bottom: 30px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .footer {
+            text-align: end;
+        }
+
+        .form-wrapper {
+            background-color: #ffffff;
+            margin: 0 40px;
+            padding: 30px;
+        }
+
+        .student-details {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<form method="post" action="View" class="needs-validation" novalidate>
+        <div class="app">
+            <div>
+                <h2 class="center pt-3">Student Registration Form</h2>
+                <div class="form-wrapper">
+                    <div class="container pt-3">
+                        <h4>ONLINE APPLICATION FORM</h4>
+                    </div>
+                    <hr />
+                    <div class="container">
+                        <div class="student-details">
+                            <p>STUDENT DETAILS</p>
+                        </div>
+                        <div class="row">
+                        <div class="col-xs-12 col-md-3">
+                            <label>Id</label>
+                            <input type="text"
+                                   placeholder="Enter Id"
+                                   class="form-control" asp-for="Id" readonly />
+                        </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-3 form-group">
+                            <label>Branch <span class="text-danger fw-bold">*</span></label>
+                            <Select class="form-select" asp-for="Branch" required>
+                                <option value="">Select Branch</option>
+                                <option value="Visakapatnam">Visakapatnam</option>
+                                <option value="Vijayawada">Vijayawada</option>
+                                <option value="Hyderabad">Hyderabad</option>
+                                <option value="Srikakulam">Srikakulam</option>
+                                <option value="Tirupati">Tirupati</option>
+                            </Select>
+                        </div>
+                        <div class="col-xs-12 col-md-3 form-group">
+                            <label>Student First Name <span class="text-danger fw-bold">*</span></label>
+                            <input type="text"
+                                   placeholder="Enter First Name"
+                                   class="form-control" autocomplete="off" asp-for="StudentFirstName" required />
+                        </div>
+                        <div class="col-xs-12 col-md-3">
+                            <label>Student Last Name <span class="text-danger fw-bold">*</span></label>
+                            <input type="text"
+                                   placeholder="Enter Last Name"
+                                   class="form-control" autocomplete="off" asp-for="StudentLastName" />
+                        </div>
+                        <div class="col-xs-12 col-md-3 form-group">
+                            <label>Gender <span class="text-danger fw-bold">*</span></label>
+                            <Select class="form-select" asp-for="Gender" required>
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </Select>
+                        </div>
+                    </div>
+
+                    <div class="row pt-4">
+                        <div class="col-xs-12 col-md-3 form-group">
+                            <label>Admission Year <span class="text-danger fw-bold">*</span></label>
+                            <Select class="form-select" asp-for="AdmissionYear" required>
+                                <option value="">Select Admission Year</option>
+                                <option value="2016-2017">2016-2017</option>
+                                <option value="2017-2018">2017-2018</option>
+                                <option value="2018-2019">2018-2019</option>
+                                <option value="2020-2021">2020-2021</option>
+                                <option value="2021-2022">2021-2022</option>
+                            </Select>
+                        </div>
+                        <div class="col-xs-12 col-md-3 form-group">
+                            <label>Admission Category <span class="text-danger fw-bold">*</span></label>
+                            <Select class="form-select" asp-for="AdmissionCategory" required>
+                                <option value="">Select Admission Category</option>
+                                <option value="General">General</option>
+                                <option value="OBC">OBC</option>
+                                <option value="SC">SC</option>
+                            </Select>
+                        </div>
+                        <div class="col-xs-12 col-md-3 form-group">
+                            <label>Class <span class="text-danger fw-bold">*</span></label>
+                            <Select class="form-select" asp-for="Class" required>
+                                <option value="">Select Class</option>
+                                <option value="Tenth">Tenth</option>
+                                <option value="Nineth">Nineth</option>
+                                <option value="Eighth">Eighth</option>
+                                <option value="Seventh">Seventh</option>
+                                <option value="Sixth">Sixth</option>
+                            </Select>
+                        </div>
+                        <div class="col-xs-12 col-md-3">
+                            <label>Student Date of Birth <span class="text-danger fw-bold">*</span></label>
+                            <input type="Date"
+                                   placeholder="Enter Student Date of Birth"
+                                   class="form-control" asp-for="StudentDateofBirth" required />
+                        </div>
+                    </div>
+
+                    <div class="row pt-4">
+                        <div class="col-xs-12 col-md-3 form-group">
+                            <label>Second Language <span class="text-danger fw-bold">*</span></label>
+                            <Select class="form-select" asp-for="SecondLanguage" onchange="onChangeSecondLanguage(event)" required>
+                                <option value="">Select Second Language</option>
+                                <option value="Telugu">Telugu</option>
+                                <option value="Hindi">Hindi</option>
+                                <option value="English">English</option>
+                            </Select>
+                        </div>
+                        <div class="col-xs-12 col-md-3 form-group">
+                            <label>Third Language <span class="text-danger fw-bold">*</span></label>
+                            <Select class="form-select" asp-for="ThirdLanguage" required>
+                                <option value="">Select Second Language</option>
+                                <option id="Telugu" value="Telugu">Telugu</option>
+                                <option id="Hindi" value="Hindi">Hindi</option>
+                                <option id="English" value="English">English</option>
+                            </Select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container pt-4">
+                    <div class="student-details">
+                        <p>PARENT/GUARDIAN DETAILS</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 form-group">
+                            <label>First Name <span class="text-danger fw-bold">*</span></label>
+                            <input type="text"
+                                   placeholder="Enter First Name"
+                                   class="form-control" asp-for="FirstName" required />
+                        </div>
+                        <div class="col-xs-12 col-md-4 form-group">
+                            <label>Last Name <span class="text-danger fw-bold">*</span></label>
+                            <input type="text"
+                                   placeholder="Enter Last Name"
+                                   class="form-control" asp-for="LastName" required />
+                        </div>
+                        <div class="col-xs-12 col-md-4 form-group">
+                            <label>Mobile Number <span class="text-danger fw-bold">*</span></label>
+                            <input type="text"
+                                   placeholder="Enter Mobile Number"
+                                   class="form-control" asp-for="MobileNumber" required />
+                        </div>
+                    </div>
+
+                    <div class="row pt-4">
+                        <div class="col-xs-12 col-md-4 form-group>
+                            <label>Email ID <span class="text-danger fw-bold">*</span></label>
+                            <input type="text"
+                                   placeholder="Enter Email ID"
+                                   class="form-control" asp-for="EmailID" required />
+                        </div>
+                        <div class="col-xs-12 col-md-4 form-group">
+                            <label>Relationship <span class="text-danger fw-bold">*</span></label>
+                            <Select class="form-select" asp-for="Relationship" required>
+                                <option value="">Select Relationship</option>
+                                <option value="Father">Father</option>
+                                <option value="Mother">Mother</option>
+                            </Select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container pt-4">
+                    <div class="student-details">
+                        <p>GENERAL INFORMATION</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-4 form-group">
+                            <label>Would you like CampusTour <span class="text-danger fw-bold">*</span></label>
+                            <Select class="form-select" asp-for="WouldyoulikeCampusTour" required>
+                                <option value="">Select...</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </Select>
+                        </div>
+                        <div class="col-xs-12 col-md-4 form-group">
+                            <label>How did you hear about us <span class="text-danger fw-bold">*</span></label>
+                            <Select class="form-select" asp-for="Howdidyouhearaboutus" required>
+                                <option value="">Select...</option>
+                                <option value="Social Media">Social Media</option>
+                                <option value="Friends">Friends</option>
+                            </Select>
+                        </div>
+                        <div class="col-xs-12 col-md-4 form-group">
+                            <label>Additional Information (75 char max)</label>
+                            <input type="text"
+                                   placeholder="Additional Information"
+                                   class="form-control" asp-for="AdditionalInformation" form-group />
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="container footer pt-4">
+                        <button class="btn btn-primary">Update Student Details</button>
+                    <button class="btn btn-danger" asp-action="Delete" asp-controller="Student">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+ </form>
+<script>
+    const languages = ["Telugu", "Hindi", "English"];
+
+    const onChangeSecondLanguage = (event) => {
+        languages.forEach((lang) => {
+            if (lang === event.target.value) {
+                document.getElementById(`${lang}`).style.display = "none";
+            } else {
+                document.getElementById(`${lang}`).style.display = "block";
+            }
+        })
+    }
+</script>
+
